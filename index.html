@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>The Soap Swap</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -106,7 +106,7 @@ animation:shine 4s linear infinite;
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px}
 
-.card{background:white;padding:35px;border-radius:22px;box-shadow:0 15px 35px rgba(0,0,0,0.08);position:relative;min-height:460px;display:flex;flex-direction:column}
+.card{background:white;padding:60px 35px 35px;border-radius:22px;box-shadow:0 15px 35px rgba(0,0,0,0.08);position:relative;min-height:460px;display:flex;flex-direction:column}
 
 .bundle{border:2px solid #111}
 
@@ -173,7 +173,7 @@ animation:shine 3s linear infinite;
 
 .old{opacity:.5;text-decoration:line-through;font-size:14px}
 
-.card h3{font-family:'Playfair Display',serif;margin-bottom:12px;font-size:24px;user-select:text}
+.card h3{font-family:'Playfair Display',serif;margin-bottom:12px;font-size:24px;user-select:text;line-height:1.2;word-break:break-word}
 .price{font-weight:700;margin-bottom:10px}
 
 ul{padding-left:18px;margin-top:10px}
@@ -852,9 +852,16 @@ footer{padding:70px 10%}
 .footer-content{
 display:flex;
 justify-content:space-between;
-align-items:flex-start;
+align-items:stretch;
 gap:60px;
 flex-wrap:wrap;
+}
+
+.footer-left,
+.footer-right{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
 }
 
 .footer-left{
@@ -902,21 +909,26 @@ border-top:1px solid #ddd;
 
 @media(max-width:768px){
 header{
-padding:16px 4%;
-flex-direction:column;
-gap:12px;
-align-items:flex-start;
+padding:12px 4%;
+flex-direction:row;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .logo{font-size:24px}
 .logo img{width:75px}
 
 nav{
-width:100%;
 display:flex;
 flex-wrap:wrap;
-gap:10px;
-justify-content:flex-start;
+gap:8px;
+justify-content:flex-end;
+align-items:center;
+max-width:60%;
 }
 
 nav a{
@@ -946,7 +958,12 @@ gap:22px;
 
 .card{
 min-height:auto;
-padding:26px;
+padding:58px 26px 26px;
+}
+
+.card h3{
+font-size:20px;
+line-height:1.2;
 }
 
 .cart-panel{
@@ -954,9 +971,24 @@ width:100%;
 right:-100%;
 }
 
-.footer-content{flex-direction:column;gap:40px}
-.footer-right{align-items:center}
-.footer-left .about{text-align:center}
+.footer-content{
+flex-direction:column;
+gap:30px;
+align-items:center;
+text-align:center;
+}
+
+.footer-left,
+.footer-right{
+width:100%;
+max-width:500px;
+align-items:center;
+}
+
+.footer-left .about{
+text-align:center;
+}
+
 .coming-soon h2{font-size:28px}
 .modal-box{
 margin:20px;
@@ -1026,7 +1058,7 @@ max-width:calc(100% - 40px);
 
 <header>
 <div class="logo" onclick="scrollToTop()">
-<img src="https://i.ibb.co/TDgR4KkF/tss-logo-main-1.png">
+<img src="https://i.ibb.co/TDgR4KkF/tss-logo-main-1.png" alt="The Soap Swap logo">
 <span>The Soap Swap</span>
 </div>
 
@@ -1035,7 +1067,7 @@ max-width:calc(100% - 40px);
 <a href="#products">Soaps</a>
 <a href="#foam">Foam Tabs</a>
 <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
-<img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png">Cart
+<img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" alt="Cart">Cart
 <span class="cart-count" id="cartCount">0</span>
 </button>
 </nav>
@@ -1319,15 +1351,15 @@ max-width:calc(100% - 40px);
 <div class="footer-right">
 <h4>Get in Touch</h4>
 <div class="contact-item">
-<img src="https://freepngimg.com/download/telephone/70827-google-contacts-mobile-phones-telephone-contact-call.png">
+<img src="https://freepngimg.com/download/telephone/70827-google-contacts-mobile-phones-telephone-contact-call.png" alt="Phone">
 <a href="https://wa.me/923341214083">+92 334 121 4083</a>
 </div>
 <div class="contact-item">
-<img src="https://freepngimg.com/save/webp/64774-computer-gmail-email-icons-png-image-high-quality">
+<img src="https://freepngimg.com/save/webp/64774-computer-gmail-email-icons-png-image-high-quality" alt="Email">
 <a href="mailto:thesoapswap@gmail.com">thesoapswap@gmail.com</a>
 </div>
 <div class="contact-item">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/960px-Instagram_logo_2016.svg.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/960px-Instagram_logo_2016.svg.png" alt="Instagram">
 <a href="https://www.instagram.com/thesoapswap/">@thesoapswap</a>
 </div>
 </div>
