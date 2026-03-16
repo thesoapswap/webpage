@@ -653,13 +653,13 @@ animation:bubbleFloat 1.2s ease-out forwards;
 .added{animation:pop .35s ease}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 
-.flip{perspective:1200px}
-.flip-inner{position:relative;width:100%;height:200px;transition:transform .7s;transform-style:preserve-3d}
-.flip:hover .flip-inner{transform:rotateY(180deg)}
-.flipped .flip-inner{transform:rotateY(180deg)}
-
-.front,.back{position:absolute;width:100%;height:100%;backface-visibility:hidden}
-.back{transform:rotateY(180deg)}
+/* Benefit Tags - Gen Z Style */
+.benefit-section{margin-top:12px;padding-top:12px;border-top:1px dashed #e0e0e0}
+.benefit-label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.benefit-tags{display:flex;flex-wrap:wrap;gap:6px}
+.benefit-tag{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;background:linear-gradient(135deg,#f0fff4,#e8fff1);border:1px solid rgba(10,122,56,0.2);border-radius:20px;font-size:11px;font-weight:500;color:#0a7a38;transition:all 0.2s ease}
+.benefit-tag:hover{background:linear-gradient(135deg,#e8fff1,#d4ffed);transform:translateY(-1px)}
+.benefit-tag::before{content:'✓';font-size:9px;font-weight:bold}
 
 /* ============================================
    CART PANEL WITH FREE SHIPPING PROGRESS
@@ -1856,15 +1856,6 @@ padding:25px;
 font-size:20px;
 }
 
-/* Flip cards - touch tap instead of hover */
-.flip:hover .flip-inner{
-transform:none !important;
-}
-
-.flipped .flip-inner{
-transform:rotateY(180deg) !important;
-}
-
 /* Cart panel - full width on mobile */
 .cart-panel{
 width:100%;
@@ -2210,10 +2201,7 @@ margin-top:0;
 <input type="text" id="customerPostal" placeholder="XXXXX">
 </div>
 </div>
-<div class="form-group">
-<label for="customerNotes">Order Notes (Optional)</label>
-<textarea id="customerNotes" placeholder="Any special instructions..." rows="2"></textarea>
-</div>
+
 </div>
 
 <!-- Delivery Information -->
@@ -2403,59 +2391,89 @@ margin-top:0;
 <h2 class="section-title">Natural Soap Collection</h2>
 <div class="grid">
 
-<div class="card flip" onclick="flip(this)">
-<div class="flip-inner">
-<div class="front"><h3 class="selectable">Moringa Reset</h3><p class="price">Rs 500</p>
-<ul><li>Moringa Leaves Extract</li><li>Vitamin E</li><li>Glycerine</li><li>Coconut Oil</li></ul></div>
-<div class="back"><h3>Benefits</h3><ul><li>Reduce oxidative stress</li><li>Support collagen synthesis</li><li>UV protection</li><li>Moisturising</li></ul></div>
+<div class="card">
+<h3 class="selectable">Moringa Reset</h3><p class="price">Rs 500</p>
+<ul><li>Moringa Leaves Extract</li><li>Vitamin E</li><li>Glycerine</li><li>Coconut Oil</li></ul>
+<div class="benefit-section">
+<div class="benefit-label">Benefits</div>
+<div class="benefit-tags">
+<span class="benefit-tag">Oxidative Stress</span>
+<span class="benefit-tag">Collagen Boost</span>
+<span class="benefit-tag">UV Protection</span>
+<span class="benefit-tag">Moisturising</span>
+</div>
 </div>
 <div class="actions">
-<button class="add-btn" onclick="event.stopPropagation();addToCart('Moringa Reset',500,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="event.stopPropagation();window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<button class="add-btn" onclick="addToCart('Moringa Reset',500,this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
-<div class="card flip" onclick="flip(this)">
-<div class="flip-inner">
-<div class="front"><h3 class="selectable">Orange Glow</h3><p class="price">Rs 500</p>
-<ul><li>Orange peel extract</li><li>Rice powder</li><li>Coconut oil</li></ul></div>
-<div class="back"><h3>Benefits</h3><ul><li>Moisture retention</li><li>Smooth texture</li><li>Barrier support</li><li>Natural glow</li></ul></div>
+<div class="card">
+<h3 class="selectable">Orange Glow</h3><p class="price">Rs 500</p>
+<ul><li>Orange peel extract</li><li>Rice powder</li><li>Coconut oil</li></ul>
+<div class="benefit-section">
+<div class="benefit-label">Benefits</div>
+<div class="benefit-tags">
+<span class="benefit-tag">Moisture Lock</span>
+<span class="benefit-tag">Smooth Skin</span>
+<span class="benefit-tag">Barrier Support</span>
+<span class="benefit-tag">Natural Glow</span>
+</div>
 </div>
 <div class="actions">
-<button class="add-btn" onclick="event.stopPropagation();addToCart('Orange Glow',500,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="event.stopPropagation();window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<button class="add-btn" onclick="addToCart('Orange Glow',500,this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
-<div class="card flip" onclick="flip(this)">
-<div class="flip-inner">
-<div class="front"><h3 class="selectable">Grape Glam</h3><p class="price">Rs 1,500</p>
-<ul><li>Grape Extract</li><li>Antioxidant Oils</li></ul></div>
-<div class="back"><h3>Benefits</h3><ul><li>Antioxidant rich</li><li>Hydrating cleanser</li><li>Fresh fragrance</li><li>Youthful skin</li></ul></div>
+<div class="card">
+<h3 class="selectable">Grape Glam</h3><p class="price">Rs 1,500</p>
+<ul><li>Grape Extract</li><li>Antioxidant Oils</li></ul>
+<div class="benefit-section">
+<div class="benefit-label">Benefits</div>
+<div class="benefit-tags">
+<span class="benefit-tag">Antioxidant Rich</span>
+<span class="benefit-tag">Hydrating</span>
+<span class="benefit-tag">Fresh Scent</span>
+<span class="benefit-tag">Anti-Aging</span>
+</div>
 </div>
 <div class="actions">
-<button class="add-btn" onclick="event.stopPropagation();addToCart('Grape Glam',1500,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="event.stopPropagation();window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<button class="add-btn" onclick="addToCart('Grape Glam',1500,this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
-<div class="card flip" onclick="flip(this)">
-<div class="flip-inner">
-<div class="front"><h3 class="selectable">Aloe Repair</h3><p class="price">Rs 700</p>
-<ul><li>Aloe Vera</li><li>Lemon Extract</li><li>Shea Butter</li></ul></div>
-<div class="back"><h3>Benefits</h3><ul><li>Treats acne</li><li>Reduces scars</li><li>Soothes skin</li><li>Deep hydration</li></ul></div>
+<div class="card">
+<h3 class="selectable">Aloe Repair</h3><p class="price">Rs 700</p>
+<ul><li>Aloe Vera</li><li>Lemon Extract</li><li>Shea Butter</li></ul>
+<div class="benefit-section">
+<div class="benefit-label">Benefits</div>
+<div class="benefit-tags">
+<span class="benefit-tag">Acne Care</span>
+<span class="benefit-tag">Scar Reduction</span>
+<span class="benefit-tag">Soothing</span>
+<span class="benefit-tag">Deep Hydration</span>
+</div>
 </div>
 <div class="actions">
-<button class="add-btn" onclick="event.stopPropagation();addToCart('Aloe Repair',700,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="event.stopPropagation();window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<button class="add-btn" onclick="addToCart('Aloe Repair',700,this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
-<div class="card flip" onclick="flip(this)">
-<div class="flip-inner">
-<div class="front"><h3 class="selectable">Royal Moroccan Ritual</h3><p class="price">Rs 900</p>
-<ul><li>Olive Oil</li><li>Argan Oil</li><li>Vitamin E</li></ul></div>
-<div class="back"><h3>Benefits</h3><ul><li>Natural exfoliation</li><li>Deep hydration</li><li>Anti aging</li><li>Skin renewal</li></ul></div>
+<div class="card">
+<h3 class="selectable">Royal Moroccan Ritual</h3><p class="price">Rs 900</p>
+<ul><li>Olive Oil</li><li>Argan Oil</li><li>Vitamin E</li></ul>
+<div class="benefit-section">
+<div class="benefit-label">Benefits</div>
+<div class="benefit-tags">
+<span class="benefit-tag">Exfoliation</span>
+<span class="benefit-tag">Deep Hydration</span>
+<span class="benefit-tag">Anti-Aging</span>
+<span class="benefit-tag">Skin Renewal</span>
+</div>
 </div>
 <div class="actions">
-<button class="add-btn" onclick="event.stopPropagation();addToCart('Royal Moroccan Ritual',900,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="event.stopPropagation();window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<button class="add-btn" onclick="addToCart('Royal Moroccan Ritual',900,this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
 </div></section>
@@ -3061,7 +3079,7 @@ phone: phoneField.value.trim(),
 email: emailField.value.trim() || 'N/A',
 address: addressField.value.trim() + ', ' + cityField.value,
 products: orderItems.join(', '),
-instructions: document.getElementById('customerNotes').value.trim() || 'N/A',
+instructions: 'N/A',
 total: 'Rs ' + formatPrice(total),
 status: 'Pending'
 }
@@ -3195,16 +3213,6 @@ copyBtn.innerHTML = '<span class="copy-icon">✓</span> Message Copied!'
 function closeConfirmation(){
 document.getElementById('confirmationOverlay').classList.remove('show')
 document.body.style.overflow = ''
-}
-
-// ============================================
-// FLIP CARD FUNCTION
-// ============================================
-
-function flip(card){
-if(window.innerWidth<768){
-card.classList.toggle('flipped')
-}
 }
 
 // ============================================
