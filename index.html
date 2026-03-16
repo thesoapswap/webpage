@@ -69,6 +69,192 @@ nav a:hover{background:#111;color:white;transform:translateY(-3px)}
 .cart-btn.bounce{animation:cartPulse .6s ease}
 .cart-btn.bounce .cart-count{animation:cartBounce .6s ease}
 
+/* ============================================
+   MOBILE NAVIGATION - HAMBURGER MENU
+   ============================================ */
+
+/* Hamburger Button - Hidden on Desktop */
+.hamburger{
+display:none;
+flex-direction:column;
+justify-content:space-between;
+width:28px;
+height:22px;
+cursor:pointer;
+z-index:1002;
+padding:0;
+background:transparent;
+border:none;
+}
+
+.hamburger span{
+display:block;
+width:100%;
+height:3px;
+background:#111;
+border-radius:3px;
+transition:all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+transform-origin:center;
+}
+
+/* Hamburger Animation - X Shape when Open */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2){
+opacity:0;
+transform:scaleX(0);
+}
+
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav{
+display:none;
+position:fixed;
+top:0;
+left:0;
+right:0;
+background:rgba(255,255,255,0.98);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+padding:110px 30px 50px;
+z-index:999;
+transform:translateY(-100%);
+opacity:0;
+visibility:hidden;
+transition:all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+box-shadow:0 10px 40px rgba(0,0,0,0.1);
+}
+
+.mobile-nav.open{
+transform:translateY(0);
+opacity:1;
+visibility:visible;
+}
+
+.mobile-nav-links{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.mobile-nav-links a{
+text-decoration:none;
+color:#111;
+font-weight:600;
+font-size:18px;
+padding:18px 25px;
+border:2px solid #111;
+border-radius:12px 28px 12px 28px;
+background:white;
+transition:all 0.3s ease;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.mobile-nav-links a::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:#111;
+transition:all 0.3s ease;
+z-index:-1;
+}
+
+.mobile-nav-links a:hover::before,
+.mobile-nav-links a:active::before{
+left:0;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a:active{
+color:white;
+}
+
+/* Floating Cart Button - Amazon Style (Mobile Only) */
+.floating-cart{
+display:none;
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:linear-gradient(145deg, #111, #333);
+border-radius:50%;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:1001;
+box-shadow:0 8px 30px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.9);
+transition:all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+border:none;
+padding:0;
+}
+
+.floating-cart:hover{
+transform:scale(1.1);
+box-shadow:0 12px 40px rgba(0,0,0,0.45), 0 0 0 5px rgba(255,255,255,1);
+}
+
+.floating-cart:active{
+transform:scale(0.95);
+}
+
+.floating-cart img{
+width:28px;
+height:28px;
+filter:invert(1);
+transition:transform 0.3s ease;
+}
+
+.floating-cart:hover img{
+transform:scale(1.1);
+}
+
+.floating-cart .floating-cart-count{
+position:absolute;
+top:-5px;
+right:-5px;
+background:linear-gradient(145deg, #25D366, #1da851);
+color:white;
+font-size:14px;
+font-weight:700;
+min-width:24px;
+height:24px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+box-shadow:0 3px 10px rgba(37,211,102,0.4);
+animation:floatPulse 2s ease-in-out infinite;
+}
+
+@keyframes floatPulse{
+0%, 100%{transform:scale(1);}
+50%{transform:scale(1.1);}
+}
+
+/* Floating cart bounce */
+@keyframes floatingBounce{
+0%{transform:scale(1) rotate(0deg);}
+25%{transform:scale(1.2) rotate(-5deg);}
+50%{transform:scale(0.95) rotate(5deg);}
+75%{transform:scale(1.1) rotate(-3deg);}
+100%{transform:scale(1) rotate(0deg);}
+}
+
+.floating-cart.bounce{
+animation:floatingBounce 0.6s ease;
+}
+
 .hero{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 10%}
 
 .hero h1{
@@ -166,7 +352,7 @@ animation:shine 3s linear infinite;
 
 .old{opacity:.5;text-decoration:line-through;font-size:14px}
 
-.card h3{font-family:'Playfair Display',serif;margin-bottom:12px;font-size:24px;user-select:text}
+.card h3{font-family:'Playfair Display',serif;margin-top:25px;margin-bottom:12px;font-size:24px;user-select:text}
 .price{font-weight:700;margin-bottom:10px}
 
 ul{padding-left:18px;margin-top:10px}
@@ -893,18 +1079,210 @@ padding-top:20px;
 border-top:1px solid #ddd;
 }
 
+/* ============================================
+   MOBILE RESPONSIVE STYLES - PHONE ONLY
+   ============================================ */
+
 @media(max-width:768px){
-.hero h1{font-size:34px}
-.logo{font-size:24px}
-.logo img{width:75px}
-nav a{padding:8px 12px;font-size:13px}
-.section{padding:70px 6%}
-.cart-panel{width:100%;right:-100%}
-.footer-content{flex-direction:column;gap:40px}
-.footer-right{align-items:center}
-.footer-left .about{text-align:center}
-.coming-soon h2{font-size:28px}
-.modal-box{margin:20px;padding:30px 25px}
+
+/* Header adjustments */
+header{
+padding:18px 5%;
+}
+
+.logo{
+font-size:22px;
+gap:12px;
+}
+
+.logo img{
+width:70px;
+}
+
+/* Hide desktop nav links on mobile */
+nav a{
+display:none;
+}
+
+/* Hide desktop cart button on mobile */
+.cart-btn{
+display:none;
+}
+
+/* Show hamburger menu on mobile */
+.hamburger{
+display:flex;
+}
+
+/* Show mobile navigation */
+.mobile-nav{
+display:block;
+}
+
+/* Show floating cart button on mobile */
+.floating-cart{
+display:flex;
+}
+
+/* Hero section */
+.hero{
+padding:60px 5%;
+min-height:60vh;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.cta{
+padding:12px 28px;
+font-size:15px;
+}
+
+/* Sections */
+.section{
+padding:60px 5%;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:35px;
+}
+
+.grid{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.card{
+min-height:auto;
+padding:25px;
+}
+
+.card h3{
+font-size:20px;
+}
+
+/* Flip cards - touch tap instead of hover */
+.flip:hover .flip-inner{
+transform:none !important;
+}
+
+.flipped .flip-inner{
+transform:rotateY(180deg) !important;
+}
+
+/* Cart panel - full width on mobile */
+.cart-panel{
+width:100%;
+right:-100%;
+padding:25px 20px;
+padding-bottom:100px;
+}
+
+/* Footer */
+.footer-content{
+flex-direction:column;
+gap:30px;
+text-align:center;
+align-items:center;
+}
+
+.footer-left{
+min-width:auto;
+width:100%;
+max-width:400px;
+}
+
+.footer-left .about{
+text-align:center;
+}
+
+.footer-right{
+align-items:center;
+width:100%;
+}
+
+.footer-right h4{
+text-align:center;
+width:100%;
+}
+
+.contact-item{
+justify-content:center;
+}
+
+/* Coming Soon */
+.coming-soon{
+padding:50px 5%;
+}
+
+.coming-soon-box{
+padding:40px 25px;
+}
+
+.coming-soon h2{
+font-size:26px;
+}
+
+/* Modal adjustments */
+.modal-box{
+margin:20px;
+padding:30px 25px;
+max-width:calc(100% - 40px);
+}
+
+.modal-btns{
+flex-direction:column;
+}
+
+.modal-btn{
+width:100%;
+}
+
+/* Scent grid */
+.scent-grid{
+grid-template-columns:repeat(3,1fr);
+gap:6px;
+}
+
+.scent-btn{
+padding:8px 6px;
+font-size:11px;
+}
+
+/* Signature card */
+.signature-products{
+padding:12px;
+}
+
+.signature-scent-section p{
+font-size:12px;
+}
+
+/* Adjust dropdown z-index for mobile */
+.scent-dropdown{
+z-index:150;
+}
+
+.signature-card .scent-dropdown{
+z-index:250;
+}
+
+/* Add extra padding at bottom for floating cart */
+body{
+padding-bottom:100px;
+}
+
+/* Ensure content isn't hidden behind mobile nav when open */
+.mobile-nav.open + *{
+margin-top:0;
+}
+
 }
 </style>
 </head>
@@ -936,7 +1314,7 @@ nav a{padding:8px 12px;font-size:13px}
 <p>Looks like you haven't added any naturals yet! Your skin is waiting for some love 🧴✨</p>
 <p class="empty-modal-subtext">Hurry up & treat yourself!</p>
 <div class="modal-btns">
-<button class="modal-btn shop-now-btn" onclick="closeModal('emptyCartModal');scrollToSection('bundles')">Shop Bundles</button>
+<button class="modal-btn shop-now-btn" onclick="handleShopBundles()">Shop Bundles</button>
 <button class="modal-btn close-modal-btn" onclick="closeModal('emptyCartModal')">Maybe Later</button>
 </div>
 </div>
@@ -972,6 +1350,13 @@ nav a{padding:8px 12px;font-size:13px}
 <span>The Soap Swap</span>
 </div>
 
+<!-- Hamburger Menu Button (Mobile Only) -->
+<button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+
 <nav>
 <a href="#bundles">Bundles</a>
 <a href="#products">Soaps</a>
@@ -982,6 +1367,21 @@ nav a{padding:8px 12px;font-size:13px}
 </button>
 </nav>
 </header>
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav" id="mobileNav">
+<div class="mobile-nav-links">
+<a href="#bundles" onclick="handleMobileNavClick('bundles')">Bundles</a>
+<a href="#products" onclick="handleMobileNavClick('products')">Soaps</a>
+<a href="#foam" onclick="handleMobileNavClick('foam')">Foam Tabs</a>
+</div>
+</div>
+
+<!-- Floating Cart Button (Mobile Only - Amazon Style) -->
+<button class="floating-cart" id="floatingCart" onclick="toggleCart()">
+<img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png">
+<span class="floating-cart-count" id="floatingCartCount">0</span>
+</button>
 
 <section class="hero" id="top">
 <h1>Stop Feeding Your Skin Chemicals, Swap To Naturals.</h1>
@@ -1297,7 +1697,50 @@ function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'})
 }
 
-function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
+// ============================================
+// MOBILE NAVIGATION FUNCTIONS
+// ============================================
+
+function toggleMobileNav(){
+const hamburger = document.getElementById('hamburger')
+const mobileNav = document.getElementById('mobileNav')
+hamburger.classList.toggle('active')
+mobileNav.classList.toggle('open')
+
+// Prevent body scroll when menu is open
+if(mobileNav.classList.contains('open')){
+document.body.style.overflow = 'hidden'
+} else {
+document.body.style.overflow = ''
+}
+}
+
+function closeMobileNav(){
+const hamburger = document.getElementById('hamburger')
+const mobileNav = document.getElementById('mobileNav')
+hamburger.classList.remove('active')
+mobileNav.classList.remove('open')
+document.body.style.overflow = ''
+}
+
+// Handle mobile nav link clicks - Auto close menu
+function handleMobileNavClick(sectionId){
+closeMobileNav()
+// Small delay for smooth animation before scrolling
+setTimeout(()=>{
+scrollToSection(sectionId)
+}, 300)
+}
+
+// ============================================
+// CART FUNCTIONS
+// ============================================
+
+function toggleCart(){
+document.getElementById('cartPanel').classList.toggle('open')
+// Close mobile nav if open
+closeMobileNav()
+}
 
 function showModal(id){
 document.getElementById(id).classList.add('show')
@@ -1323,10 +1766,19 @@ setTimeout(()=>bubble.remove(),1200)
 
 function bounceCart(){
 const cartBtn=document.getElementById('cartBtn')
+const floatingCart=document.getElementById('floatingCart')
+
+// Desktop cart button bounce
 cartBtn.classList.remove('bounce')
 void cartBtn.offsetWidth
 cartBtn.classList.add('bounce')
 setTimeout(()=>cartBtn.classList.remove('bounce'),600)
+
+// Floating cart button bounce
+floatingCart.classList.remove('bounce')
+void floatingCart.offsetWidth
+floatingCart.classList.add('bounce')
+setTimeout(()=>floatingCart.classList.remove('bounce'),600)
 }
 
 function addToCart(name,price,btn,scent=''){
@@ -1454,18 +1906,50 @@ container.innerHTML+=`<div class="cart-item">
 </div>`
 })
 
+// Update both cart counters
 document.getElementById('cartCount').innerText=count
+document.getElementById('floatingCartCount').innerText=count
 document.getElementById('cartTotal').innerText='Total: Rs '+formatPrice(total)
 }
 
-function showCheckout(){document.getElementById('checkoutForm').style.display='flex'}
+// FIXED: Show empty cart modal when checkout with empty cart
+function showCheckout(){
+if(cart.length === 0){
+showModal('emptyCartModal')
+return
+}
+document.getElementById('checkoutForm').style.display='flex'
+}
+
+// Handle Shop Bundles button - close everything and scroll
+function handleShopBundles(){
+closeModal('emptyCartModal')
+// Close cart panel if open
+document.getElementById('cartPanel').classList.remove('open')
+closeMobileNav()
+setTimeout(()=>{
+scrollToSection('bundles')
+}, 200)
+}
 
 function flip(card){if(window.innerWidth<768){card.classList.toggle('flipped')}}
 
+// Close dropdowns when clicking outside
 document.addEventListener('click',function(e){
 if(!e.target.closest('.scent-selector')){
 document.querySelectorAll('.scent-dropdown').forEach(d=>d.classList.remove('open'))
 document.querySelectorAll('.scent-selector-btn').forEach(b=>b.classList.remove('open'))
+}
+})
+
+// Close mobile nav when clicking outside
+document.addEventListener('click',function(e){
+const mobileNav = document.getElementById('mobileNav')
+const hamburger = document.getElementById('hamburger')
+if(mobileNav.classList.contains('open') && 
+!e.target.closest('.mobile-nav') && 
+!e.target.closest('.hamburger')){
+closeMobileNav()
 }
 })
 </script>
