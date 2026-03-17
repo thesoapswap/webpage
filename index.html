@@ -772,6 +772,7 @@ animation:cardShine 3s ease-in-out infinite;
 }
 
 .signature-card h3{
+font-size:26px;
 background:linear-gradient(90deg,#111,#d4af37,#111);
 background-size:200% auto;
 -webkit-background-clip:text;
@@ -3072,6 +3073,15 @@ margin-top:0;
 <div class="grid">
 
 <div class="card bundle"><span class="tag">Popular</span><span class="discount">Save 10%</span>
+<div class="product-slider" data-slider="freshglow">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/zVkzQCJ4/fresh-glow-duo-1.png" alt="Fresh Glow Duo" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/d4QTyw6z/fresh-glow-duo.png" alt="Fresh Glow Duo" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'freshglow')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'freshglow')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Fresh Glow Duo</h3><p class="old">Rs 1,000</p><p class="price">Rs 899</p>
 <ul><li>Orange Glow</li><li>Moringa Reset</li></ul>
 <div class="actions">
@@ -3080,6 +3090,12 @@ margin-top:0;
 </div></div>
 
 <div class="card bundle"><span class="tag">Viral</span><span class="discount">Save 200</span>
+<div class="product-slider" data-slider="viralglow">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/kgxMFPD7/viral-glow-bundle.png" alt="Viral Glow Bundle" loading="eager"></div>
+</div>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Viral Glow Bundle</h3><p class="old">Rs 2,300</p><p class="price">Rs 2,099</p>
 <ul><li>Grape Glam</li><li>Orange Glow</li><li>Foam Tabs</li></ul>
 <div class="actions">
@@ -3088,6 +3104,12 @@ margin-top:0;
 </div></div>
 
 <div class="card bundle"><span class="tag">Luxury</span><span class="discount">Save 300</span>
+<div class="product-slider" data-slider="royalspa">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/p6Mhw481/Royal-Spa-Bundle.png" alt="Royal Spa Bundle" loading="eager"></div>
+</div>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Royal Spa Bundle</h3><p class="old">Rs 2,200</p><p class="price">Rs 1,899</p>
 <ul><li>Royal Moroccan Ritual</li><li>Aloe Repair</li><li>2 Foam Tabs</li></ul>
 <div class="actions">
@@ -3096,6 +3118,12 @@ margin-top:0;
 </div></div>
 
 <div class="card bundle"><span class="tag">Gift</span><span class="discount">Save 400</span>
+<div class="product-slider" data-slider="luxuryskin">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/84KkDHw7/Luxury-Skin-Trio.png" alt="Luxury Skin Trio" loading="eager"></div>
+</div>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Luxury Skin Trio</h3><p class="old">Rs 3,100</p><p class="price">Rs 2,699</p>
 <ul><li>Grape Glam</li><li>Royal Moroccan Ritual</li><li>Aloe Repair</li></ul>
 <div class="actions">
@@ -3106,6 +3134,12 @@ margin-top:0;
 <!-- TSS Signature Bag -->
 <div class="card bundle signature-card"><span class="tag">Flagship</span><span class="discount">MEGA DEAL</span>
 <div class="signature-shine"></div>
+<div class="product-slider" data-slider="tsssignature">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/rf2t6G1V/TSS-SIGNATURE.png" alt="TSS Signature Bag" loading="eager"></div>
+</div>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">TSS Signature Bag</h3><p class="old">Rs 4,000</p><p class="price">Rs 3,399</p>
 <div class="signature-products">
 <ul>
@@ -3113,7 +3147,7 @@ margin-top:0;
 <li>Moringa Reset</li>
 <li>Orange Glow</li>
 <li>Royal Moroccan Ritual</li>
-<li>Any 2 Foam Tabs of your choice</li>
+<li>Any 2 Foam Tabs</li>
 </ul>
 <div class="signature-scent-section">
 <p>🧴 Choose your 2 Foam Tab scents:</p>
