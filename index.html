@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>The Soap Swap</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -39,16 +39,104 @@ header{display:flex;justify-content:space-between;align-items:center;padding:25p
 .logo:hover{transform:scale(1.02)}
 .logo img{width:105px}
 
-nav{display:flex;gap:14px;align-items:center}
+nav{display:flex;gap:12px;align-items:center}
 
-nav a{text-decoration:none;color:#111;font-weight:600;padding:10px 22px;border:2px solid #111;border-radius:12px 28px 12px 28px;background:white;transition:.3s}
-nav a:hover{background:#111;color:white;transform:translateY(-3px)}
+nav a{
+text-decoration:none;
+color:#111;
+font-weight:600;
+padding:10px 20px;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+transition:all .3s cubic-bezier(0.68,-0.55,0.265,1.55);
+box-shadow:0 4px 15px rgba(0,0,0,0.08),0 0 0 1px rgba(255,255,255,0.5) inset,inset 0 1px 0 rgba(255,255,255,0.8);
+position:relative;
+overflow:hidden;
+letter-spacing:0.3px;
+}
 
-.cart-btn{position:relative;padding:10px 16px;border:2px solid #111;border-radius:30px;background:white;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.3s;font-family:'Inter',sans-serif;font-weight:600}
-.cart-btn:hover{background:#111;color:white;transform:translateY(-3px)}
-.cart-btn img{width:20px;transition:.3s}
-.cart-btn:hover img{filter:invert(1)}
-.cart-count{position:absolute;top:-8px;right:-8px;background:#111;color:white;font-size:12px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:transform .3s}
+nav a::before{
+content:'';
+position:absolute;
+top:0;left:-100%;
+width:100%;height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+transition:0.5s;
+}
+
+nav a:hover::before{left:100%}
+
+nav a:hover{
+background:rgba(17,17,17,0.9);
+color:white;
+transform:translateY(-3px);
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.cart-btn-wrapper{
+position:relative;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
+
+.cart-btn{
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:rgba(37,211,102,0.15);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:8px;
+transition:all .3s ease;
+font-family:'Inter',sans-serif;
+font-weight:600;
+color:#0a7a38;
+box-shadow:0 4px 15px rgba(37,211,102,0.15),0 0 0 1px rgba(37,211,102,0.3) inset;
+letter-spacing:0.3px;
+}
+
+.cart-btn:hover{
+background:rgba(37,211,102,0.9);
+color:white;
+transform:translateY(-2px);
+box-shadow:0 8px 25px rgba(37,211,102,0.35);
+}
+
+.cart-btn img{
+width:18px;
+transition:.3s;
+filter:none;
+}
+
+.cart-btn:hover img{
+filter:invert(1);
+}
+
+.cart-count{
+position:absolute;
+top:-8px;
+right:-8px;
+background:linear-gradient(145deg,#111,#333);
+color:white;
+font-size:11px;
+font-weight:700;
+min-width:20px;
+height:20px;
+padding:0 4px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+box-shadow:0 2px 10px rgba(0,0,0,0.3);
+z-index:10;
+}
 
 /* Cart bounce animation */
 @keyframes cartBounce{
@@ -143,15 +231,19 @@ gap:15px;
 text-decoration:none;
 color:#111;
 font-weight:600;
-font-size:18px;
-padding:18px 25px;
-border:2px solid #111;
-border-radius:12px 28px 12px 28px;
-background:white;
-transition:all 0.3s ease;
+font-size:16px;
+padding:16px 24px;
+border:none;
+border-radius:14px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+transition:all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 text-align:center;
 position:relative;
 overflow:hidden;
+letter-spacing:0.3px;
+box-shadow:0 4px 15px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.5) inset, inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .mobile-nav-links a::before{
@@ -161,19 +253,21 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:#111;
-transition:all 0.3s ease;
-z-index:-1;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+transition:0.5s;
 }
 
 .mobile-nav-links a:hover::before,
 .mobile-nav-links a:active::before{
-left:0;
+left:100%;
 }
 
 .mobile-nav-links a:hover,
 .mobile-nav-links a:active{
+background:rgba(17,17,17,0.9);
 color:white;
+transform:translateY(-3px);
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
 }
 
 /* Floating Cart Button - Amazon Style (Mobile Only) */
@@ -277,19 +371,364 @@ animation:shine 4s linear infinite;
 .cta:hover{background:#222;transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,0.25)}
 
 .section{padding:90px 8%}
-.section-title{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:55px;text-align:center}
+.section-title{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:30px;text-align:center}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px}
 
-.card{background:white;padding:30px;border-radius:22px;box-shadow:0 15px 35px rgba(0,0,0,0.08);position:relative;display:flex;flex-direction:column}
+.card{background:white;padding:30px;border-radius:22px;box-shadow:0 15px 35px rgba(0,0,0,0.08);position:relative;display:flex;flex-direction:column;overflow:visible}
+
+.card.has-open-dropdown{
+z-index:100 !important;
+overflow:visible;
+}
 
 .bundle{border:2px solid #111}
+
+/* ============================================
+   PRODUCT IMAGE SLIDER - GEN Z STYLE
+   ============================================ */
+
+.product-slider{
+position:relative;
+width:100%;
+padding-bottom:100%; /* Aspect ratio 1:1 fallback */
+aspect-ratio:1/1;
+border-radius:16px;
+overflow:hidden;
+margin-bottom:20px;
+background:linear-gradient(135deg,#f5f5f5,#fff);
+}
+
+.slider-track{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+display:flex;
+width:100%;
+height:100%;
+transition:transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slider-track.dragging{
+transition:none;
+}
+
+.slide{
+min-width:100%;
+width:100%;
+height:100%;
+flex-shrink:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#fafafa,#fff);
+overflow:hidden;
+position:relative;
+}
+
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:16px;
+transition:transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+will-change:transform;
+display:block;
+}
+
+/* Zoom on hover */
+.product-slider:hover .slide img{
+transform:scale(1.05);
+}
+
+/* Slider Navigation Arrows */
+.slider-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:36px;
+height:36px;
+border-radius:50%;
+background:rgba(255,255,255,0.95);
+border:none;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+transition:all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+z-index:10;
+opacity:0;
+}
+
+.product-slider:hover .slider-arrow{
+opacity:1;
+}
+
+.slider-arrow:hover{
+transform:translateY(-50%) scale(1.15);
+box-shadow:0 6px 20px rgba(0,0,0,0.25);
+}
+
+.slider-arrow:active{
+transform:translateY(-50%) scale(0.95);
+}
+
+.slider-arrow.prev{
+left:10px;
+}
+
+.slider-arrow.next{
+right:10px;
+}
+
+.slider-arrow svg{
+width:16px;
+height:16px;
+fill:none;
+stroke:#111;
+stroke-width:2.5;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+/* Slider Dots */
+.slider-dots{
+position:absolute;
+bottom:12px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:8px;
+z-index:10;
+}
+
+.slider-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:rgba(255,255,255,0.5);
+border:1px solid rgba(0,0,0,0.1);
+cursor:pointer;
+transition:all 0.3s ease;
+}
+
+.slider-dot:hover{
+background:rgba(255,255,255,0.8);
+transform:scale(1.2);
+}
+
+.slider-dot.active{
+background:#fff;
+width:24px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
+animation:dotPop 0.3s ease;
+}
+
+@keyframes dotPop{
+0%{transform:scale(0.5)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+/* Touch swipe indicator */
+.swipe-hint{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+background:rgba(0,0,0,0.6);
+color:white;
+padding:8px 16px;
+border-radius:20px;
+font-size:12px;
+font-weight:500;
+opacity:0;
+pointer-events:none;
+transition:opacity 0.3s ease;
+z-index:5;
+}
+
+.product-slider:first-child .swipe-hint{
+animation:swipeHint 3s ease-in-out 1s;
+}
+
+@keyframes swipeHint{
+0%,100%{opacity:0}
+20%,80%{opacity:1}
+}
+
+/* Slider animations */
+@keyframes slideIn{
+from{opacity:0;transform:translateX(20px)}
+to{opacity:1;transform:translateX(0)}
+}
+
+.slider-track .slide{
+animation:slideIn 0.4s ease;
+}
+
+/* Foam Tab Card Slider */
+.foam-tab-card .product-slider{
+padding-bottom:100%;
+aspect-ratio:1/1;
+margin-bottom:16px;
+border-radius:12px;
+}
+
+.foam-tab-card .slider-arrow{
+width:28px;
+height:28px;
+}
+
+.foam-tab-card .slider-arrow svg{
+width:12px;
+height:12px;
+}
+
+.foam-tab-card .slider-dots{
+bottom:8px;
+gap:6px;
+}
+
+.foam-tab-card .slider-dot{
+width:6px;
+height:6px;
+}
+
+.foam-tab-card .slider-dot.active{
+width:18px;
+}
+
+/* Mobile Slider Styles */
+@media(max-width:768px){
+.product-slider{
+padding-bottom:100%;
+aspect-ratio:1/1;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+.slider-arrow{
+width:32px;
+height:32px;
+opacity:0.8;
+}
+
+.slider-arrow:hover{
+transform:translateY(-50%) scale(1.1);
+}
+
+.slider-arrow svg{
+width:14px;
+height:14px;
+}
+
+.slider-dots{
+bottom:10px;
+gap:6px;
+}
+
+.slider-dot{
+width:7px;
+height:7px;
+}
+
+.slider-dot.active{
+width:20px;
+}
+
+.foam-tab-card .product-slider{
+aspect-ratio:1/1;
+}
+
+.foam-tab-card .slider-arrow{
+width:24px;
+height:24px;
+}
+
+.foam-tab-card .slider-arrow svg{
+width:10px;
+height:10px;
+}
+}
+
+@media(max-width:480px){
+.product-slider{
+aspect-ratio:1/1;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.slider-arrow{
+width:28px;
+height:28px;
+opacity:1;
+}
+
+.slider-arrow svg{
+width:12px;
+height:12px;
+}
+
+.slider-dots{
+bottom:8px;
+gap:5px;
+}
+
+.slider-dot{
+width:6px;
+height:6px;
+}
+
+.slider-dot.active{
+width:16px;
+}
+
+.foam-tab-card .product-slider{
+aspect-ratio:1/1;
+}
+
+.foam-tab-card .slider-arrow{
+width:22px;
+height:22px;
+}
+
+.foam-tab-card .slider-arrow svg{
+width:9px;
+height:9px;
+}
+
+.foam-tab-card .slider-dots{
+bottom:6px;
+gap:4px;
+}
+
+.foam-tab-card .slider-dot{
+width:5px;
+height:5px;
+}
+
+.foam-tab-card .slider-dot.active{
+width:14px;
+}
+}
 
 .signature-card{
 background:linear-gradient(135deg,#fff 0%,#f8f6f0 50%,#fff 100%);
 border:3px solid transparent;
 background-clip:padding-box;
 position:relative;
+overflow:visible;
+z-index:1;
+}
+
+.signature-card.has-open-dropdown{
+z-index:100 !important;
+overflow:visible;
 }
 
 .signature-card::before{
@@ -341,21 +780,21 @@ background-clip:text;
 animation:shine 3s linear infinite;
 }
 
-.tag{position:absolute;top:14px;left:14px;background:#111;color:white;font-size:12px;padding:4px 10px;border-radius:20px;z-index:2}
+.tag{position:absolute;top:14px;left:14px;background:#111;color:white;font-size:12px;padding:4px 10px;border-radius:20px;z-index:15;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 .discount{position:absolute;top:14px;right:14px;background:#e8fff1;color:#0a7a38;font-weight:600;font-size:12px;padding:5px 10px;border-radius:20px;z-index:2}
 
 .old{opacity:.5;text-decoration:line-through;font-size:14px}
 
-.card h3{font-family:'Playfair Display',serif;margin-top:25px;margin-bottom:12px;font-size:24px;user-select:text}
+.card h3{font-family:'Playfair Display',serif;margin-top:20px;margin-bottom:12px;font-size:24px;user-select:text}
 .price{font-weight:700;margin-bottom:10px}
 
 ul{padding-left:18px;margin-top:8px}
 ul li{padding:3px 0;font-size:14px;line-height:1.5}
 
-.actions{margin-top:auto;display:flex;flex-direction:column;gap:10px;position:relative;z-index:10}
+.actions{margin-top:auto;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
 
 .signature-card .actions{
-z-index:5;
+z-index:1;
 }
 
 .add-btn{
@@ -470,67 +909,76 @@ color:white;
 .scent-selector{
 position:relative;
 margin:8px 0;
-z-index:50;
+z-index:10;
+}
+
+.scent-selector.has-dropdown-open{
+z-index:99999 !important;
 }
 
 .scent-selector:first-of-type{
-z-index:51;
+z-index:11;
 }
 
 .scent-selector-btn{
 width:100%;
 padding:12px 16px;
-border:2px solid #e0e0e0;
+border:none;
 border-radius:12px;
-background:linear-gradient(145deg,#fff,#f8f8f8);
+background:#ffffff;
 font-family:'Inter',sans-serif;
 font-size:14px;
-font-weight:500;
+font-weight:600;
 cursor:pointer;
 transition:all .3s ease;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+box-shadow:0 2px 12px rgba(0,0,0,0.08);
 position:relative;
-z-index:2;
+color:#111;
+letter-spacing:0.3px;
 }
 
 .scent-selector-btn:hover{
-border-color:#111;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(0,0,0,0.12);
+background:#ffffff;
 }
 
-.scent-selector-btn.active{
-border-color:#111;
-background:#111;
+.scent-selector-btn.active,.scent-selector-btn.open{
+background:#111111;
 color:white;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
 }
 
 .scent-selector-btn::after{
 content:'▼';
-font-size:10px;
+font-size:8px;
 transition:transform .3s ease;
+margin-left:8px;
+opacity:0.6;
 }
 
 .scent-selector-btn.open::after{
 transform:rotate(180deg);
+opacity:1;
 }
 
 .scent-dropdown{
 position:absolute;
-top:calc(100% + 5px);
-left:0;right:0;
-background:white;
-border:2px solid #111;
+top:calc(100% + 6px);
+left:0;
+right:0;
+background:#ffffff;
 border-radius:12px;
 overflow:hidden;
 opacity:0;
 visibility:hidden;
-transform:translateY(-10px);
-transition:all .3s cubic-bezier(0.68,-0.55,0.265,1.55);
-z-index:100;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transform:translateY(-8px);
+transition:all .25s ease;
+z-index:99999;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
 }
 
 .scent-dropdown.open{
@@ -539,55 +987,61 @@ visibility:visible;
 transform:translateY(0);
 }
 
-.signature-card .scent-dropdown{
-z-index:200;
-}
-
 .scent-option{
-padding:12px 16px;
+padding:14px 16px;
 cursor:pointer;
 transition:all .2s ease;
-border-bottom:1px solid #eee;
 display:flex;
 align-items:center;
-gap:10px;
+justify-content:space-between;
+font-weight:500;
+position:relative;
 }
 
-.scent-option:last-child{border-bottom:none}
-
 .scent-option:hover{
-background:linear-gradient(90deg,#f5f5f5,#fff);
-padding-left:22px;
+background:#f5f5f5;
 }
 
 .scent-option.selected{
-background:#111;
+background:#111111;
 color:white;
 }
 
-.scent-option::before{
+.scent-option::after{
 content:'';
-width:8px;height:8px;
+width:8px;
+height:8px;
 border-radius:50%;
 background:#ddd;
 transition:all .2s ease;
+flex-shrink:0;
 }
 
-.scent-option:hover::before{background:#111}
-.scent-option.selected::before{background:#25D366;box-shadow:0 0 8px #25D366}
+.scent-option:hover::after{
+background:#111;
+}
+
+.scent-option.selected::after{
+background:#25D366;
+box-shadow:0 0 8px #25D366;
+}
 
 .scent-label{
-font-size:12px;
-color:#666;
-margin-bottom:5px;
+font-size:11px;
+color:#888;
+margin-bottom:6px;
 display:flex;
 align-items:center;
 gap:6px;
+font-weight:500;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 
 .scent-label::before{
-content:'🧴';
-font-size:14px;
+content:'✦';
+font-size:10px;
+color:#111;
 }
 
 .scent-check{
@@ -610,7 +1064,8 @@ background:rgba(212,175,55,0.08);
 border-radius:12px;
 border:1px solid rgba(212,175,55,0.2);
 position:relative;
-z-index:10;
+z-index:5;
+overflow:visible;
 }
 
 .signature-products li{
@@ -624,6 +1079,7 @@ padding-top:15px;
 border-top:1px dashed rgba(212,175,55,0.3);
 position:relative;
 z-index:100;
+overflow:visible;
 }
 
 .signature-scent-section p{
@@ -661,6 +1117,307 @@ animation:bubbleFloat 1.2s ease-out forwards;
 .benefit-tag{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;background:linear-gradient(135deg,#f0fff4,#e8fff1);border:1px solid rgba(10,122,56,0.2);border-radius:20px;font-size:11px;font-weight:500;color:#0a7a38;transition:all 0.2s ease}
 .benefit-tag:hover{background:linear-gradient(135deg,#e8fff1,#d4ffed);transform:translateY(-1px)}
 .benefit-tag::before{content:'✓';font-size:9px;font-weight:bold}
+
+/* ============================================
+   INDIVIDUAL FOAM TAB SCENT CARDS
+   ============================================ */
+
+.foam-tabs-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:15px;
+}
+
+.foam-tab-card{
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+transition:all 0.3s ease;
+border:2px solid transparent;
+}
+
+.foam-tab-card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(0,0,0,0.12);
+border-color:#111;
+}
+
+.foam-tab-card h4{
+font-family:'Playfair Display',serif;
+font-size:18px;
+margin-top:28px;
+margin-bottom:8px;
+color:#111;
+user-select:text;
+}
+
+.foam-tab-card .foam-price{
+font-weight:700;
+font-size:16px;
+color:#0a7a38;
+margin-bottom:12px;
+}
+
+.foam-tab-card .foam-actions{
+display:flex;
+flex-direction:column;
+gap:8px;
+width:100%;
+margin-top:auto;
+padding-top:12px;
+}
+
+.foam-tab-card .foam-add-btn{
+padding:10px 16px;
+border:none;
+border-radius:12px;
+font-weight:600;
+font-family:'Inter',sans-serif;
+font-size:13px;
+cursor:pointer;
+transition:all .3s cubic-bezier(0.68,-0.55,0.265,1.55);
+background:rgba(17,17,17,0.85);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+color:white;
+width:100%;
+position:relative;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+letter-spacing:0.3px;
+}
+
+.foam-tab-card .foam-add-btn::before{
+content:'';
+position:absolute;
+top:0;left:-100%;
+width:100%;height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+transition:0.5s;
+}
+
+.foam-tab-card .foam-add-btn:hover::before{
+left:100%;
+}
+
+.foam-tab-card .foam-add-btn:hover{
+background:rgba(17,17,17,0.95);
+transform:translateY(-2px);
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+
+.foam-tab-card .foam-whatsapp-btn{
+padding:8px 14px;
+border:none;
+border-radius:10px;
+font-weight:600;
+font-family:'Inter',sans-serif;
+font-size:12px;
+cursor:pointer;
+transition:all .3s cubic-bezier(0.68,-0.55,0.265,1.55);
+background:rgba(37,211,102,0.85);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+color:white;
+width:100%;
+position:relative;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(37,211,102,0.2);
+letter-spacing:0.3px;
+}
+
+.foam-tab-card .foam-whatsapp-btn::before{
+content:'';
+position:absolute;
+top:0;left:-100%;
+width:100%;height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+transition:0.5s;
+}
+
+.foam-tab-card .foam-whatsapp-btn:hover::before{
+left:100%;
+}
+
+.foam-tab-card .foam-whatsapp-btn:hover{
+background:rgba(46,213,115,0.95);
+transform:translateY(-2px);
+box-shadow:0 8px 25px rgba(37,211,102,0.35);
+}
+
+/* Scent Emoji Icons for Foam Tabs */
+.foam-scent-icon{
+font-size:32px;
+margin-bottom:10px;
+line-height:1;
+}
+
+/* Mobile Responsive for Foam Tab Cards */
+@media(max-width:768px){
+.foam-tabs-grid{
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.foam-tab-card{
+padding:15px;
+}
+
+.foam-tab-card h4{
+font-size:15px;
+margin-top:24px;
+}
+
+.foam-tab-card .foam-price{
+font-size:14px;
+}
+
+.foam-scent-icon{
+font-size:28px;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:20px;
+}
+}
+
+@media(max-width:480px){
+.foam-tabs-grid{
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.foam-tab-card{
+padding:12px;
+}
+
+.foam-tab-card h4{
+font-size:13px;
+margin-top:22px;
+}
+
+.foam-tab-card .foam-price{
+font-size:13px;
+}
+
+.foam-tab-card .foam-add-btn,
+.foam-tab-card .foam-whatsapp-btn{
+padding:8px 10px;
+font-size:11px;
+}
+
+.foam-scent-icon{
+font-size:24px;
+}
+
+.section-title{
+font-size:24px;
+margin-bottom:15px;
+}
+}
+
+/* Extra small phones (iPhone SE, etc) */
+@media(max-width:375px){
+header{
+padding:15px 4%;
+}
+
+.logo{
+font-size:18px;
+gap:8px;
+}
+
+.logo img{
+width:55px;
+}
+
+.hero{
+padding:50px 4%;
+min-height:50vh;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.section{
+padding:40px 4%;
+}
+
+.section-title{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.grid{
+gap:10px;
+}
+
+.card{
+padding:12px;
+}
+
+.card h3{
+font-size:14px;
+margin-top:12px;
+}
+
+.foam-tabs-grid{
+gap:8px;
+}
+
+.foam-tab-card{
+padding:10px;
+}
+
+.foam-tab-card h4{
+font-size:12px;
+margin-top:18px;
+}
+
+.foam-tab-card .foam-price{
+font-size:12px;
+}
+
+.foam-tab-card .foam-add-btn,
+.foam-tab-card .foam-whatsapp-btn{
+padding:6px 8px;
+font-size:10px;
+}
+
+.floating-cart{
+width:55px;
+height:55px;
+bottom:20px;
+right:20px;
+}
+
+.floating-cart img{
+width:24px;
+height:24px;
+}
+
+.mobile-nav{
+padding:90px 20px 40px;
+}
+
+.mobile-nav-links a{
+font-size:14px;
+padding:14px 20px;
+}
+}
 
 /* ============================================
    CART PANEL WITH FREE SHIPPING PROGRESS
@@ -1766,7 +2523,7 @@ margin-bottom:5px;
 }
 
 .contact-item{display:flex;align-items:center;gap:12px}
-.contact-item img{width:24px;height:24px}
+.contact-item img{width:24px;height:24px;object-fit:contain}
 .contact-item a{text-decoration:none;color:#111;transition:.3s;padding:8px 0;display:inline-block}
 .contact-item a:hover{color:#25D366}
 
@@ -1801,6 +2558,10 @@ display:none;
 }
 
 .cart-btn{
+display:none;
+}
+
+.cart-btn-wrapper{
 display:none;
 }
 
@@ -1840,21 +2601,22 @@ padding:60px 5%;
 
 .section-title{
 font-size:28px;
-margin-bottom:35px;
+margin-bottom:20px;
 }
 
 .grid{
-grid-template-columns:1fr;
-gap:25px;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
 }
 
 .card{
 min-height:auto;
-padding:25px;
+padding:15px;
 }
 
 .card h3{
-font-size:20px;
+font-size:16px;
+margin-top:15px;
 }
 
 /* Cart panel - full width on mobile */
@@ -2018,13 +2780,15 @@ padding:12px;
 font-size:12px;
 }
 
-/* Adjust dropdown z-index for mobile */
-.scent-dropdown{
-z-index:150;
+/* Mobile scent selector adjustments */
+.scent-selector-btn{
+padding:10px 14px;
+font-size:13px;
 }
 
-.signature-card .scent-dropdown{
-z-index:250;
+.scent-option{
+padding:12px 14px;
+font-size:13px;
 }
 
 /* Add extra padding at bottom for floating cart */
@@ -2273,10 +3037,12 @@ margin-top:0;
 <a href="#bundles">Bundles</a>
 <a href="#products">Soaps</a>
 <a href="#foam">Foam Tabs</a>
+<div class="cart-btn-wrapper">
+<span class="cart-count" id="cartCount">0</span>
 <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
 <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png">Cart
-<span class="cart-count" id="cartCount">0</span>
 </button>
+</div>
 </nav>
 </header>
 
@@ -2353,36 +3119,114 @@ margin-top:0;
 <p>🧴 Choose your 2 Foam Tab scents:</p>
 <div class="scent-selector">
 <div class="scent-label">First Scent</div>
-<div class="scent-selector-btn" onclick="toggleScentDropdown('sig1')">
+<div class="scent-selector-btn" onclick="toggleScentDropdown('sig1', event)">
 <span id="sig1Text">Select 1st Scent</span>
 </div>
 <div class="scent-dropdown" id="sig1Dropdown">
-<div class="scent-option" onclick="selectScentOption('sig1','Strawberry')">Strawberry</div>
-<div class="scent-option" onclick="selectScentOption('sig1','Jasmine')">Jasmine</div>
-<div class="scent-option" onclick="selectScentOption('sig1','Velvet')">Velvet</div>
-<div class="scent-option" onclick="selectScentOption('sig1','Milk')">Milk</div>
-<div class="scent-option" onclick="selectScentOption('sig1','Grape')">Grape</div>
-<div class="scent-option" onclick="selectScentOption('sig1','Lemon')">Lemon</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Strawberry', event)">Strawberry</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Jasmine', event)">Jasmine</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Velvet', event)">Velvet</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Milk', event)">Milk</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Grape', event)">Grape</div>
+<div class="scent-option" onclick="selectScentOption('sig1','Lemon', event)">Lemon</div>
 </div>
 </div>
 <div class="scent-selector">
 <div class="scent-label">Second Scent</div>
-<div class="scent-selector-btn" onclick="toggleScentDropdown('sig2')">
+<div class="scent-selector-btn" onclick="toggleScentDropdown('sig2', event)">
 <span id="sig2Text">Select 2nd Scent</span>
 </div>
 <div class="scent-dropdown" id="sig2Dropdown">
-<div class="scent-option" onclick="selectScentOption('sig2','Strawberry')">Strawberry</div>
-<div class="scent-option" onclick="selectScentOption('sig2','Jasmine')">Jasmine</div>
-<div class="scent-option" onclick="selectScentOption('sig2','Velvet')">Velvet</div>
-<div class="scent-option" onclick="selectScentOption('sig2','Milk')">Milk</div>
-<div class="scent-option" onclick="selectScentOption('sig2','Grape')">Grape</div>
-<div class="scent-option" onclick="selectScentOption('sig2','Lemon')">Lemon</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Strawberry', event)">Strawberry</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Jasmine', event)">Jasmine</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Velvet', event)">Velvet</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Milk', event)">Milk</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Grape', event)">Grape</div>
+<div class="scent-option" onclick="selectScentOption('sig2','Lemon', event)">Lemon</div>
 </div>
 </div>
 </div>
 </div>
 <div class="actions">
 <button class="add-btn" onclick="addSignatureBag(this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div></div>
+
+<!-- 2 Foam Tabs Combo -->
+<div class="card bundle">
+<span class="tag">Popular</span>
+<div class="product-slider" data-slider="2bundle">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/Cs50B8Ls/2-bundle-pic-2.png" alt="2 Foam Tabs Bundle" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/qF0XcSWB/2-bundle-pic-3.png" alt="2 Foam Tabs Bundle" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'2bundle')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'2bundle')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h3 class="selectable">2 Foam Tabs Mini Boxes</h3>
+<p class="price">Rs 600</p>
+<p style="font-size:14px;opacity:0.7;margin-bottom:10px">Choose your 2 scents:</p>
+
+<div class="scent-selector">
+<div class="scent-label">First Scent</div>
+<div class="scent-selector-btn" onclick="toggleScentDropdown('combo1', event)">
+<span id="combo1Text">Select 1st Scent</span>
+</div>
+<div class="scent-dropdown" id="combo1Dropdown">
+<div class="scent-option" onclick="selectScentOption('combo1','Strawberry', event)">Strawberry</div>
+<div class="scent-option" onclick="selectScentOption('combo1','Jasmine', event)">Jasmine</div>
+<div class="scent-option" onclick="selectScentOption('combo1','Velvet', event)">Velvet</div>
+<div class="scent-option" onclick="selectScentOption('combo1','Milk', event)">Milk</div>
+<div class="scent-option" onclick="selectScentOption('combo1','Grape', event)">Grape</div>
+<div class="scent-option" onclick="selectScentOption('combo1','Lemon', event)">Lemon</div>
+</div>
+</div>
+
+<div class="scent-selector">
+<div class="scent-label">Second Scent</div>
+<div class="scent-selector-btn" onclick="toggleScentDropdown('combo2', event)">
+<span id="combo2Text">Select 2nd Scent</span>
+</div>
+<div class="scent-dropdown" id="combo2Dropdown">
+<div class="scent-option" onclick="selectScentOption('combo2','Strawberry', event)">Strawberry</div>
+<div class="scent-option" onclick="selectScentOption('combo2','Jasmine', event)">Jasmine</div>
+<div class="scent-option" onclick="selectScentOption('combo2','Velvet', event)">Velvet</div>
+<div class="scent-option" onclick="selectScentOption('combo2','Milk', event)">Milk</div>
+<div class="scent-option" onclick="selectScentOption('combo2','Grape', event)">Grape</div>
+<div class="scent-option" onclick="selectScentOption('combo2','Lemon', event)">Lemon</div>
+</div>
+</div>
+
+<div class="actions">
+<button class="add-btn" onclick="addFoamCombo(this)">Add to Cart</button>
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div></div>
+
+<!-- 6 Foam Tabs Bundle -->
+<div class="card bundle">
+<span class="discount">Save Rs 200</span>
+<div class="product-slider" data-slider="6bundle">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/fdMKfR68/6-bundle-pic-1.png" alt="6 Foam Tabs Bundle" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/jvy8jTn7/6-bundle-pic-3.png" alt="6 Foam Tabs Bundle" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'6bundle')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'6bundle')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h3 class="selectable">6 Foam Tabs Mini Boxes</h3>
+<p class="old">Rs 1,800</p>
+<p class="price">Rs 1,600</p>
+<p style="font-size:14px;opacity:0.7;margin-bottom:10px">All 6 scents included:</p>
+<div class="scent-check"><span>✓</span> Strawberry</div>
+<div class="scent-check"><span>✓</span> Jasmine</div>
+<div class="scent-check"><span>✓</span> Velvet</div>
+<div class="scent-check"><span>✓</span> Milk</div>
+<div class="scent-check"><span>✓</span> Grape</div>
+<div class="scent-check"><span>✓</span> Lemon</div>
+<div class="actions">
+<button class="add-btn" onclick="addToCart('6 Foam Tabs Bundle (All Scents)',1600,this)">Add to Cart</button>
 <button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div></div>
 
@@ -2393,6 +3237,17 @@ margin-top:0;
 <div class="grid">
 
 <div class="card">
+<div class="product-slider" data-slider="moringa">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/dJj1jPMp/Whats-App-Image-2026-03-17-at-5-46-55-AM-1.jpg" alt="Moringa Reset" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/s9BM6dtV/Whats-App-Image-2026-03-17-at-5-46-56-AM.jpg" alt="Moringa Reset" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/zVTtWTNS/Whats-App-Image-2026-03-17-at-5-46-54-AM.jpg" alt="Moringa Reset" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/ZpvQC17M/Whats-App-Image-2026-03-17-at-5-46-55-AM.jpg" alt="Moringa Reset" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'moringa')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'moringa')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Moringa Reset</h3><p class="price">Rs 500</p>
 <ul><li>Moringa Leaves Extract</li><li>Vitamin E</li><li>Glycerine</li><li>Coconut Oil</li><li>Glycerine Based Oil</li></ul>
 <div class="benefit-section">
@@ -2410,6 +3265,17 @@ margin-top:0;
 </div></div>
 
 <div class="card">
+<div class="product-slider" data-slider="orange">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/qMGHDXc5/Whats-App-Image-2026-03-17-at-5-46-19-AM-1.jpg" alt="Orange Glow" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/yBW3Shh5/Whats-App-Image-2026-03-17-at-5-46-19-AM-2.jpg" alt="Orange Glow" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/zWc9MD51/Whats-App-Image-2026-03-17-at-5-46-19-AM.jpg" alt="Orange Glow" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/M5kVtWSW/Whats-App-Image-2026-03-17-at-5-46-19-AM-3.jpg" alt="Orange Glow" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'orange')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'orange')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Orange Glow</h3><p class="price">Rs 500</p>
 <ul><li>Orange Peel Extract</li><li>Orange Peel Powder</li><li>Rice Powder</li><li>Coconut Oil</li><li>Vitamin E</li><li>Glycerin</li></ul>
 <div class="benefit-section">
@@ -2427,6 +3293,17 @@ margin-top:0;
 </div></div>
 
 <div class="card">
+<div class="product-slider" data-slider="grape">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/HTwcfCLP/Whats-App-Image-2026-03-17-at-5-47-25-AM-1.jpg" alt="Grape Glam" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/xR32Mnk/Whats-App-Image-2026-03-17-at-5-47-25-AM.jpg" alt="Grape Glam" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/DPWxtKDH/Whats-App-Image-2026-03-17-at-5-47-24-AM.jpg" alt="Grape Glam" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/Pz5bvQx3/Whats-App-Image-2026-03-17-at-5-47-24-AM-1.jpg" alt="Grape Glam" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'grape')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'grape')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Grape Glam</h3><p class="price">Rs 1,500</p>
 <ul><li>Grape Extract</li><li>Antioxidant Oils</li></ul>
 <div class="benefit-section">
@@ -2444,6 +3321,17 @@ margin-top:0;
 </div></div>
 
 <div class="card">
+<div class="product-slider" data-slider="aloe">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/MxC1zY0n/Whats-App-Image-2026-03-17-at-5-48-01-AM-1.jpg" alt="Aloe Repair" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/BHcsHF6F/Whats-App-Image-2026-03-17-at-5-48-01-AM-3.jpg" alt="Aloe Repair" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/VYxg2s83/Whats-App-Image-2026-03-17-at-5-48-01-AM.jpg" alt="Aloe Repair" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/mCffb5Gx/Whats-App-Image-2026-03-17-at-5-48-01-AM-2.jpg" alt="Aloe Repair" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'aloe')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'aloe')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Aloe Repair</h3><p class="price">Rs 700</p>
 <ul><li>Aloe Vera</li><li>Lemon Extract</li><li>Glycerin</li><li>Coconut Oil</li><li>Shea Butter</li><li>Natural Fragrance</li></ul>
 <div class="benefit-section">
@@ -2461,6 +3349,17 @@ margin-top:0;
 </div></div>
 
 <div class="card">
+<div class="product-slider" data-slider="moroccan">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/Bx6RHzq/Whats-App-Image-2026-03-17-at-5-48-25-AM.jpg" alt="Royal Moroccan Ritual" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/3yNX54Nr/Whats-App-Image-2026-03-17-at-5-48-26-AM.jpg" alt="Royal Moroccan Ritual" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/pjxjMGmb/Whats-App-Image-2026-03-17-at-5-48-24-AM.jpg" alt="Royal Moroccan Ritual" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/HL6PznRT/Whats-App-Image-2026-03-17-at-5-48-25-AM-1.jpg" alt="Royal Moroccan Ritual" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'moroccan')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'moroccan')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
 <h3 class="selectable">Royal Moroccan Ritual</h3><p class="price">Rs 900</p>
 <ul><li>Olive Oil</li><li>Cyperus Roots Oil</li><li>Argan Oil</li><li>Vitamin E</li></ul>
 <div class="benefit-section">
@@ -2481,87 +3380,129 @@ margin-top:0;
 
 <section class="section" id="foam">
 <h2 class="section-title">TSS Foam Tabs</h2>
-<div class="grid">
 
-<!-- Single Box -->
-<div class="card">
-<h3 class="selectable">TSS FOAM TABS Mini Box</h3>
-<p class="price">Rs 300</p>
-<p style="font-size:14px;opacity:0.7;margin-bottom:10px">Choose your scent:</p>
-<div class="scent-grid" id="singleScent">
-<button class="scent-btn" onclick="selectScent(this,'single')">Strawberry</button>
-<button class="scent-btn" onclick="selectScent(this,'single')">Jasmine</button>
-<button class="scent-btn" onclick="selectScent(this,'single')">Velvet</button>
-<button class="scent-btn" onclick="selectScent(this,'single')">Milk</button>
-<button class="scent-btn" onclick="selectScent(this,'single')">Grape</button>
-<button class="scent-btn" onclick="selectScent(this,'single')">Lemon</button>
-</div>
-<div class="actions">
-<button class="add-btn" onclick="addFoamSingle(this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
-</div>
-</div>
+<!-- Individual Scent Cards -->
+<p style="text-align:center;margin-bottom:20px;opacity:0.8;">Choose your favorite scent - Rs 300 each</p>
+<div class="foam-tabs-grid">
 
-<!-- 2 Boxes Combo -->
-<div class="card">
+<!-- Lemon Foam Tabs -->
+<div class="foam-tab-card">
 <span class="tag">Popular</span>
-<h3 class="selectable">2 TSS FOAM TABS Mini Boxes</h3>
-<p class="price">Rs 600</p>
-<p style="font-size:14px;opacity:0.7;margin-bottom:10px">Choose your 2 scents:</p>
-
-<div class="scent-selector">
-<div class="scent-label">First Scent</div>
-<div class="scent-selector-btn" onclick="toggleScentDropdown('combo1')">
-<span id="combo1Text">Select 1st Scent</span>
+<div class="product-slider" data-slider="lemon">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/Swzwq4TG/yellow-lemon-2.png" alt="Lemon Foam Tabs" loading="eager"></div>
+<div class="slide"><img src="https://i.ibb.co/G6Mc5xt/yellow-lemon.png" alt="Lemon Foam Tabs" loading="lazy"></div>
 </div>
-<div class="scent-dropdown" id="combo1Dropdown">
-<div class="scent-option" onclick="selectScentOption('combo1','Strawberry')">Strawberry</div>
-<div class="scent-option" onclick="selectScentOption('combo1','Jasmine')">Jasmine</div>
-<div class="scent-option" onclick="selectScentOption('combo1','Velvet')">Velvet</div>
-<div class="scent-option" onclick="selectScentOption('combo1','Milk')">Milk</div>
-<div class="scent-option" onclick="selectScentOption('combo1','Grape')">Grape</div>
-<div class="scent-option" onclick="selectScentOption('combo1','Lemon')">Lemon</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'lemon')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'lemon')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h4 class="selectable">Lemon Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Lemon Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div>
 </div>
 
-<div class="scent-selector">
-<div class="scent-label">Second Scent</div>
-<div class="scent-selector-btn" onclick="toggleScentDropdown('combo2')">
-<span id="combo2Text">Select 2nd Scent</span>
+<!-- Strawberry Foam Tabs -->
+<div class="foam-tab-card">
+<div class="product-slider" data-slider="strawberry">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/q3q7DWSw/pink-strawberry-2.png" alt="Strawberry Foam Tabs" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/kVDcq97P/pink-strawberry.png" alt="Strawberry Foam Tabs" loading="lazy"></div>
 </div>
-<div class="scent-dropdown" id="combo2Dropdown">
-<div class="scent-option" onclick="selectScentOption('combo2','Strawberry')">Strawberry</div>
-<div class="scent-option" onclick="selectScentOption('combo2','Jasmine')">Jasmine</div>
-<div class="scent-option" onclick="selectScentOption('combo2','Velvet')">Velvet</div>
-<div class="scent-option" onclick="selectScentOption('combo2','Milk')">Milk</div>
-<div class="scent-option" onclick="selectScentOption('combo2','Grape')">Grape</div>
-<div class="scent-option" onclick="selectScentOption('combo2','Lemon')">Lemon</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'strawberry')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'strawberry')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
 </div>
-</div>
-
-<div class="actions">
-<button class="add-btn" onclick="addFoamCombo(this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<h4 class="selectable">Strawberry Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Strawberry Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
 </div>
 </div>
 
-<!-- 6 Boxes Bundle -->
-<div class="card">
-<span class="discount">Save Rs 200</span>
-<h3 class="selectable">6 TSS FOAM TABS Mini Boxes</h3>
-<p class="old">Rs 1,800</p>
-<p class="price">Rs 1,600</p>
-<p style="font-size:14px;opacity:0.7;margin-bottom:10px">All 6 scents included:</p>
-<div class="scent-check"><span>✓</span> Strawberry</div>
-<div class="scent-check"><span>✓</span> Jasmine</div>
-<div class="scent-check"><span>✓</span> Velvet</div>
-<div class="scent-check"><span>✓</span> Milk</div>
-<div class="scent-check"><span>✓</span> Grape</div>
-<div class="scent-check"><span>✓</span> Lemon</div>
-<div class="actions">
-<button class="add-btn" onclick="addToCart('6 TSS FOAM TABS Bundle (All Scents)',1600,this)">Add to Cart</button>
-<button class="whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+<!-- Jasmine Foam Tabs -->
+<div class="foam-tab-card">
+<span class="tag">Gift</span>
+<div class="product-slider" data-slider="jasmine">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/20qz7Hsn/green-jasmine-2.png" alt="Jasmine Foam Tabs" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/PvC0zSWP/green-jasmine.png" alt="Jasmine Foam Tabs" loading="lazy"></div>
 </div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'jasmine')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'jasmine')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h4 class="selectable">Jasmine Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Jasmine Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div>
+</div>
+
+<!-- Velvet Foam Tabs -->
+<div class="foam-tab-card">
+<span class="tag">Gift</span>
+<div class="product-slider" data-slider="velvet">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/BVVy2BQd/white-velvet-2.png" alt="Velvet Foam Tabs" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/mF2ZDWGp/white-velvet.png" alt="Velvet Foam Tabs" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'velvet')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'velvet')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h4 class="selectable">Velvet Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Velvet Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div>
+</div>
+
+<!-- Milk Foam Tabs -->
+<div class="foam-tab-card">
+<div class="product-slider" data-slider="milk">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/gMsWRHMF/blue-milk-2.png" alt="Milk Foam Tabs" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/gMnMw65L/blue-milk.png" alt="Milk Foam Tabs" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'milk')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'milk')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h4 class="selectable">Milk Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Milk Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div>
+</div>
+
+<!-- Grape Foam Tabs -->
+<div class="foam-tab-card">
+<span class="tag">Popular</span>
+<div class="product-slider" data-slider="grapefoam">
+<div class="slider-track">
+<div class="slide"><img src="https://i.ibb.co/DD16TFtp/purple-grape-2.png" alt="Grape Foam Tabs" loading="lazy"></div>
+<div class="slide"><img src="https://i.ibb.co/8JfNG99/purple-grape.png" alt="Grape Foam Tabs" loading="lazy"></div>
+</div>
+<button class="slider-arrow prev" onclick="slidePrev(event,'grapefoam')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="slider-arrow next" onclick="slideNext(event,'grapefoam')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="slider-dots"></div>
+</div>
+<h4 class="selectable">Grape Foam Tabs</h4>
+<p class="foam-price">Rs 300</p>
+<div class="foam-actions">
+<button class="foam-add-btn" onclick="addToCart('Grape Foam Tabs',300,this)">Add to Cart</button>
+<button class="foam-whatsapp-btn" onclick="window.open('https://wa.me/923341214083')">Buy on WhatsApp</button>
+</div>
+</div>
+
 </div>
 
 </div></section>
@@ -2611,15 +3552,15 @@ margin-top:0;
 <div class="footer-right">
 <h4>Get in Touch</h4>
 <div class="contact-item">
-<img src="https://freepngimg.com/download/telephone/70827-google-contacts-mobile-phones-telephone-contact-call.png">
+<img src="https://cdn-icons-png.flaticon.com/128/724/724664.png" alt="Phone">
 <a href="https://wa.me/923341214083" target="_blank" rel="noopener noreferrer">+92 334 121 4083</a>
 </div>
 <div class="contact-item">
-<img src="https://freepngimg.com/save/webp/64774-computer-gmail-email-icons-png-image-high-quality">
+<img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" alt="Email">
 <a href="mailto:thesoapswap@gmail.com">thesoapswap@gmail.com</a>
 </div>
 <div class="contact-item">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/960px-Instagram_logo_2016.svg.png">
+<img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram">
 <a href="https://www.instagram.com/thesoapswap/" target="_blank" rel="noopener noreferrer">@thesoapswap</a>
 </div>
 </div>
@@ -2635,7 +3576,6 @@ margin-top:0;
 // GLOBAL VARIABLES
 // ============================================
 let cart=[]
-let selectedSingleScent=''
 let selectedScents={combo1:'',combo2:'',sig1:'',sig2:''}
 let currentOrderData = null // Store current order data for WhatsApp
 let currentOrderMessage = '' // Store current order message for copy fallback
@@ -2744,36 +3684,79 @@ else{cart.push({name:cartName,price,qty:1,scent})}
 updateCart()
 }
 
-function selectScent(btn,type){
-if(type==='single'){
-document.querySelectorAll('#singleScent .scent-btn').forEach(b=>b.classList.remove('selected'))
-btn.classList.add('selected')
-selectedSingleScent=btn.textContent
-}
+function toggleScentDropdown(id, event){
+if(event){
+event.stopPropagation()
+event.preventDefault()
 }
 
-function toggleScentDropdown(id){
+// Close all other dropdowns and remove open classes
 document.querySelectorAll('.scent-dropdown').forEach(d=>{
-if(d.id!==id+'Dropdown') d.classList.remove('open')
+if(d.id !== id+'Dropdown'){
+d.classList.remove('open')
+}
 })
 document.querySelectorAll('.scent-selector-btn').forEach(b=>{
-if(!b.nextElementSibling || b.nextElementSibling.id!==id+'Dropdown') b.classList.remove('open')
+b.classList.remove('open')
 })
-const dropdown=document.getElementById(id+'Dropdown')
-const btn=dropdown.previousElementSibling
-dropdown.classList.toggle('open')
-btn.classList.toggle('open')
+document.querySelectorAll('.scent-selector').forEach(s=>{
+s.classList.remove('has-dropdown-open')
+})
+document.querySelectorAll('.card').forEach(c=>{
+c.classList.remove('has-open-dropdown')
+})
+
+// Toggle current dropdown
+const dropdown = document.getElementById(id+'Dropdown')
+const textSpan = document.getElementById(id+'Text')
+const btn = textSpan ? textSpan.parentElement : null
+const selector = dropdown ? dropdown.parentElement : null
+const card = dropdown ? dropdown.closest('.card') : null
+
+if(dropdown){
+const isOpen = dropdown.classList.toggle('open')
+if(btn){
+btn.classList.toggle('open', isOpen)
+}
+if(selector){
+selector.classList.toggle('has-dropdown-open', isOpen)
+}
+if(card){
+card.classList.toggle('has-open-dropdown', isOpen)
+}
+}
 }
 
-function selectScentOption(id,scent){
-selectedScents[id]=scent
-document.getElementById(id+'Text').textContent=scent
-document.getElementById(id+'Dropdown').classList.remove('open')
-document.getElementById(id+'Dropdown').previousElementSibling.classList.remove('open')
-document.getElementById(id+'Dropdown').previousElementSibling.classList.add('active')
+function selectScentOption(id, scent, event){
+if(event){
+event.stopPropagation()
+}
+selectedScents[id] = scent
+const dropdown = document.getElementById(id+'Dropdown')
+const textSpan = document.getElementById(id+'Text')
+const btn = textSpan ? textSpan.parentElement : null
+const selector = dropdown ? dropdown.parentElement : null
+const card = dropdown ? dropdown.closest('.card') : null
+
+if(dropdown){
+dropdown.classList.remove('open')
+}
+if(btn){
+btn.classList.remove('open')
+btn.classList.add('selected')
+}
+if(selector){
+selector.classList.remove('has-dropdown-open')
+}
+if(card){
+card.classList.remove('has-open-dropdown')
+}
+if(textSpan){
+textSpan.textContent = scent
+}
 document.querySelectorAll('#'+id+'Dropdown .scent-option').forEach(opt=>{
 opt.classList.remove('selected')
-if(opt.textContent===scent) opt.classList.add('selected')
+if(opt.textContent === scent) opt.classList.add('selected')
 })
 }
 
@@ -2783,14 +3766,6 @@ document.getElementById('scentAlertText').textContent=text
 showModal('scentAlertModal')
 }
 
-function addFoamSingle(btn){
-if(!selectedSingleScent){
-showScentAlert('Pick Your Favorite! 🧴','Please select a scent before adding to cart!')
-return
-}
-addToCart('TSS FOAM TABS Mini Box',300,btn,selectedSingleScent)
-}
-
 function addFoamCombo(btn){
 const s1=selectedScents.combo1
 const s2=selectedScents.combo2
@@ -2798,7 +3773,7 @@ if(!s1||!s2){
 showScentAlert('Almost There! ✨','Please select both scents for your combo pack!')
 return
 }
-addToCart('2 TSS FOAM TABS Mini Boxes',600,btn,s1+' + '+s2)
+addToCart('2 Foam Tabs Mini Boxes',600,btn,s1+' + '+s2)
 }
 
 function addSignatureBag(btn){
@@ -3225,6 +4200,11 @@ document.addEventListener('click',function(e){
 if(!e.target.closest('.scent-selector')){
 document.querySelectorAll('.scent-dropdown').forEach(d=>d.classList.remove('open'))
 document.querySelectorAll('.scent-selector-btn').forEach(b=>b.classList.remove('open'))
+document.querySelectorAll('.scent-selector').forEach(s=>{
+s.classList.remove('active')
+s.classList.remove('has-dropdown-open')
+})
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('has-open-dropdown'))
 }
 })
 
@@ -3238,6 +4218,149 @@ if(mobileNav.classList.contains('open') &&
 closeMobileNav()
 }
 })
+
+// ============================================
+// PRODUCT IMAGE SLIDER FUNCTIONALITY
+// ============================================
+
+const sliderStates = {}
+
+function initSliders(){
+document.querySelectorAll('.product-slider').forEach(slider=>{
+const id = slider.dataset.slider
+const track = slider.querySelector('.slider-track')
+const slides = slider.querySelectorAll('.slide')
+const dotsContainer = slider.querySelector('.slider-dots')
+
+if(!slides.length) return
+
+sliderStates[id] = {
+currentIndex: 0,
+totalSlides: slides.length,
+track: track,
+autoPlay: null
+}
+
+// Initialize track position
+track.style.transform = 'translateX(0%)'
+
+// Mark first slide as current
+slides[0].classList.add('current')
+
+// Create dots
+if(dotsContainer){
+dotsContainer.innerHTML = ''
+slides.forEach((_, i)=>{
+const dot = document.createElement('div')
+dot.className = 'slider-dot' + (i === 0 ? ' active' : '')
+dot.onclick = (e) => {
+e.stopPropagation()
+goToSlide(id, i)
+}
+dotsContainer.appendChild(dot)
+})
+}
+
+// Add touch/swipe support
+let startX = 0
+let isDragging = false
+
+slider.addEventListener('touchstart', (e) => {
+startX = e.touches[0].clientX
+isDragging = true
+track.classList.add('dragging')
+}, { passive: true })
+
+slider.addEventListener('touchmove', (e) => {
+if(!isDragging) return
+}, { passive: true })
+
+slider.addEventListener('touchend', (e) => {
+if(!isDragging) return
+isDragging = false
+track.classList.remove('dragging')
+const endX = e.changedTouches[0].clientX
+const diff = startX - endX
+if(Math.abs(diff) > 50){
+if(diff > 0){
+slideNext(null, id)
+} else {
+slidePrev(null, id)
+}
+}
+})
+
+// Auto-play for lemon slider only
+if(id === 'lemon'){
+startAutoPlay(id)
+slider.addEventListener('mouseenter', () => stopAutoPlay(id))
+slider.addEventListener('mouseleave', () => startAutoPlay(id))
+}
+})
+}
+
+function slidePrev(e, id){
+if(e && e.stopPropagation) e.stopPropagation()
+if(!sliderStates[id]){
+console.log('Slider not found:', id)
+return
+}
+const state = sliderStates[id]
+state.currentIndex = (state.currentIndex - 1 + state.totalSlides) % state.totalSlides
+updateSlider(id)
+}
+
+function slideNext(e, id){
+if(e && e.stopPropagation) e.stopPropagation()
+if(!sliderStates[id]){
+console.log('Slider not found:', id)
+return
+}
+const state = sliderStates[id]
+state.currentIndex = (state.currentIndex + 1) % state.totalSlides
+updateSlider(id)
+}
+
+function goToSlide(id, index){
+const state = sliderStates[id]
+if(!state) return
+state.currentIndex = index
+updateSlider(id)
+}
+
+function updateSlider(id){
+const state = sliderStates[id]
+if(!state) return
+
+// Update track position
+state.track.style.transform = `translateX(-${state.currentIndex * 100}%)`
+
+// Update dots
+const slider = document.querySelector(`[data-slider="${id}"]`)
+if(slider){
+const dots = slider.querySelectorAll('.slider-dot')
+dots.forEach((dot, i) => {
+dot.classList.toggle('active', i === state.currentIndex)
+})
+}
+}
+
+function startAutoPlay(id){
+stopAutoPlay(id)
+sliderStates[id].autoPlay = setInterval(() => {
+slideNext(null, id)
+}, 4000)
+}
+
+function stopAutoPlay(id){
+if(sliderStates[id] && sliderStates[id].autoPlay){
+clearInterval(sliderStates[id].autoPlay)
+sliderStates[id].autoPlay = null
+}
+}
+
+// Initialize sliders when DOM is ready
+document.addEventListener('DOMContentLoaded', initSliders)
 </script>
 
 </body>
